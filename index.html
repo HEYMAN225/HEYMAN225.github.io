@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Bhinit Kumar Rout · Software & Business Analyst">
+<meta property="og:description" content="Business questions, data and the systems that answer them: Dun & Bradstreet, Brandscapes, the OWND! case study, a bankruptcy scorecard and an IEEE paper.">
+<meta property="og:type" content="website">
+<title>Bhinit Kumar Rout</title>
+<meta name="description" content="Portfolio of Bhinit Kumar Rout, Software and Business Analyst in Mumbai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root { color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+/* Layout: one 1080px column. Hero splits name and thesis (left) from a ledger of results (right);
+   projects pair a Question / Method / Result write-up with one figure from the work itself. */
+:root {
+  --bg: #F3F5F9;
+  --surface: #FFFFFF;
+  --ink: #121A2B;
+  --ink-2: #435069;
+  --muted: #687389;
+  --rule: #D8DDE7;
+  --accent: #2545D3;
+  --accent-soft: #E6EBFC;
+  --warm: #C04A30;
+  --bar-lo: #A8B6EC;
+
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.1875rem;
+  --step-2: 1.5rem;
+  --step-3: clamp(1.75rem, 1.2rem + 2vw, 2.25rem);
+  --step-4: clamp(2.6rem, 1.4rem + 5.2vw, 4.75rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0B101B; --surface: #131A29; --ink: #E8ECF4; --ink-2: #AFB8CA; --muted: #808A9E;
+    --rule: #263048; --accent: #8EA2FF; --accent-soft: #1A2344; --warm: #F08C70; --bar-lo: #3C4C8C;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0B101B; --surface: #131A29; --ink: #E8ECF4; --ink-2: #AFB8CA; --muted: #808A9E;
+  --rule: #263048; --accent: #8EA2FF; --accent-soft: #1A2344; --warm: #F08C70; --bar-lo: #3C4C8C;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 var(--step-0)/1.62 var(--font-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1080px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; letter-spacing: -0.015em; }
+p { margin: 0; }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+ul { margin: 0; padding: 0; }
+.label {
+  font: 500 var(--step--1)/1.3 var(--font-mono);
+  text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);
+}
+.num { font-variant-numeric: tabular-nums; }
+
+/* Top bar */
+.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-block: 22px; }
+.mark { font: 700 var(--step-1)/1 var(--font-display); color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
+.mark span { color: var(--accent); }
+.top nav { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+.top nav a { color: var(--ink-2); text-decoration: none; font-size: 0.9375rem; }
+.top nav a:hover { color: var(--accent); }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 56px; padding-block: 40px 72px; align-items: start; }
+.hero-main { display: grid; gap: 22px; min-width: 0; }
+.hero h1 { font-size: var(--step-4); font-weight: 800; line-height: 0.95; letter-spacing: -0.035em; }
+.thesis { font: 500 var(--step-2)/1.32 var(--font-display); color: var(--ink); max-width: 30ch; letter-spacing: -0.01em; }
+.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; font: 500 0.875rem/1.3 var(--font-mono); }
+.flow span { padding: 6px 10px; border: 1px solid var(--rule); border-radius: 3px; background: var(--surface); color: var(--ink); }
+.flow i { font-style: normal; color: var(--accent); }
+.flow span:last-child { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.summary { color: var(--ink-2); max-width: 60ch; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px;
+  background: var(--accent); color: var(--bg); text-decoration: none; font-weight: 600; border-radius: 4px;
+}
+.btn:hover { text-decoration: none; filter: brightness(1.08); }
+.actions .plain { font-weight: 500; }
+
+.ledger { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 24px 24px 8px; min-width: 0; }
+.ledger dl { margin: 14px 0 0; }
+.ledger .row { display: grid; gap: 2px; padding-block: 14px; border-top: 1px solid var(--rule); }
+.ledger dt { font: 700 1.75rem/1.1 var(--font-display); letter-spacing: -0.02em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.ledger dt .arrow { color: var(--accent); font-weight: 500; }
+.ledger dd { margin: 0; color: var(--ink-2); font-size: 0.9375rem; line-height: 1.5; }
+
+/* Sections */
+section.block { padding-block: 64px; border-top: 1px solid var(--rule); }
+.section-head { display: grid; gap: 10px; margin-bottom: 36px; max-width: 62ch; }
+.section-head h2 { font-size: var(--step-3); font-weight: 700; }
+.section-head p { color: var(--ink-2); }
+
+/* Value lenses */
+.lenses { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; }
+.lens { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.lens h3 { font-size: var(--step-1); font-weight: 700; display: flex; align-items: baseline; gap: 10px; }
+.lens h3 .label { color: var(--accent); }
+.lens p { color: var(--ink-2); }
+.evidence { list-style: none; display: grid; gap: 8px; }
+.evidence li { padding-left: 16px; position: relative; font-size: 0.9375rem; }
+.evidence li::before { content: ""; position: absolute; left: 0; top: 0.68em; width: 6px; height: 6px; border-radius: 1px; background: var(--accent); }
+
+/* Experience */
+.jobs { display: grid; }
+.job { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 32px; padding-block: 30px; border-top: 1px solid var(--rule); }
+.job:first-child { border-top: 0; padding-top: 0; }
+.job-when { display: grid; gap: 6px; align-content: start; }
+.job-when .dates { font: 500 0.875rem/1.4 var(--font-mono); color: var(--ink); }
+.job-when .where { font-size: 0.875rem; color: var(--muted); }
+.job-body { display: grid; gap: 12px; min-width: 0; }
+.job-body h3 { font-size: var(--step-2); font-weight: 700; }
+.role { color: var(--ink-2); font-weight: 500; margin-top: -6px; }
+.points { list-style: none; display: grid; gap: 10px; max-width: 70ch; }
+.points li { padding-left: 18px; position: relative; }
+.points li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 8px; height: 1.5px; background: var(--muted); }
+.points strong { font-weight: 600; color: var(--ink); }
+
+.tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.tags li {
+  font: 400 0.8125rem/1.3 var(--font-mono); color: var(--ink-2);
+  padding: 4px 9px; border: 1px solid var(--rule); border-radius: 3px; background: var(--surface);
+}
+
+/* Projects */
+.project { display: grid; gap: 28px; padding-block: 40px; border-top: 1px solid var(--rule); }
+.project:first-of-type { border-top: 0; padding-top: 0; }
+.project-head { display: grid; gap: 10px; max-width: 72ch; }
+.project-head h3 { font-size: var(--step-3); font-weight: 700; line-height: 1.12; }
+.project-head .lead { color: var(--ink-2); font-size: var(--step-1); line-height: 1.5; }
+.project-body { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 44px; align-items: start; }
+.qa { margin: 0; display: grid; gap: 18px; min-width: 0; }
+.qa div { display: grid; gap: 4px; }
+.qa dt { font: 500 var(--step--1)/1.3 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); }
+.qa dd { margin: 0; color: var(--ink); }
+.side { display: grid; gap: 18px; min-width: 0; }
+figure.fig { margin: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 18px 18px 14px; display: grid; gap: 10px; }
+.fig-title { font: 600 0.9375rem/1.35 var(--font-body); color: var(--ink); }
+.fig-sub { font-size: 0.8125rem; color: var(--muted); margin-top: -6px; }
+.chart { width: 100%; height: auto; display: block; max-width: 100%; }
+.chart .bar { stroke: var(--surface); stroke-width: 1; }
+.chart .bar.neg { fill: var(--warm); }
+.chart .bar.pos { fill: var(--accent); }
+.chart .bar.hi { fill: var(--accent); }
+.chart .bar.lo { fill: var(--bar-lo); }
+.chart .axis { stroke: var(--ink-2); stroke-width: 1.25; }
+.chart .val { font: 500 12.5px var(--font-mono); fill: var(--ink); font-variant-numeric: tabular-nums; }
+.chart .cat { font: 400 12px var(--font-body); fill: var(--muted); }
+figcaption { font-size: 0.8125rem; color: var(--ink-2); line-height: 1.5; border-top: 1px solid var(--rule); padding-top: 10px; }
+figcaption b { font: 500 0.75rem/1 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+.stats div { padding: 14px 14px 12px; display: grid; gap: 2px; border-left: 1px solid var(--rule); min-width: 0; }
+.stats div:first-child { border-left: 0; }
+.stats .v { font: 700 1.375rem/1.15 var(--font-display); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+.stats .k { font-size: 0.8125rem; color: var(--muted); line-height: 1.35; }
+.links { display: flex; flex-wrap: wrap; gap: 8px 22px; font-weight: 500; }
+.byline { font-size: 0.875rem; color: var(--muted); }
+
+/* Toolkit */
+.toolkit { margin: 0; display: grid; }
+.toolkit > div { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 32px; padding-block: 16px; border-top: 1px solid var(--rule); align-items: baseline; }
+.toolkit > div:first-child { border-top: 0; padding-top: 0; }
+.toolkit dt { font-weight: 600; }
+.toolkit dd { margin: 0; }
+
+/* Education & contact */
+.edu { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 32px; align-items: baseline; }
+.edu .dates { font: 500 0.875rem/1.4 var(--font-mono); }
+.edu h3 { font-size: var(--step-1); font-weight: 700; }
+.edu p { color: var(--ink-2); }
+
+.contact { display: grid; gap: 22px; }
+.contact h2 { font-size: var(--step-4); font-weight: 800; line-height: 1; letter-spacing: -0.035em; max-width: 14ch; }
+.contact-row { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; }
+.email { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.email output { font: 500 var(--step-1)/1.3 var(--font-mono); color: var(--ink); user-select: all; overflow-wrap: anywhere; }
+.copy {
+  font: 500 0.8125rem/1 var(--font-mono); padding: 8px 12px; cursor: pointer;
+  background: var(--surface); color: var(--ink); border: 1px solid var(--rule); border-radius: 3px;
+}
+.copy:hover { border-color: var(--accent); color: var(--accent); }
+
+footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.875rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  a, .btn, .copy { transition: color .15s ease, border-color .15s ease, filter .15s ease; }
+}
+
+@media (max-width: 880px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-block: 20px 56px; }
+  .project-body { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .lenses { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+}
+@media (max-width: 640px) {
+  .job, .toolkit > div, .edu { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  section.block { padding-block: 48px; }
+  .stats { grid-template-columns: minmax(0, 1fr); }
+  .stats div { border-left: 0; border-top: 1px solid var(--rule); }
+  .stats div:first-child { border-top: 0; }
+  .ledger { padding: 20px 18px 6px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="#name">Bhinit<span>.</span></a>
+    <nav aria-label="Sections">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#toolkit">Toolkit</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" aria-labelledby="name">
+    <div class="hero-main">
+      <p class="label">Software &amp; Business Analyst · Mumbai</p>
+      <h1 id="name">Bhinit Kumar Rout</h1>
+      <p class="thesis">I take a business question, find the data behind it, and build the software that answers it at scale.</p>
+      <div class="flow" aria-label="How I work: business question, then data, then a system that ships">
+        <span>Business question</span><i aria-hidden="true">→</i>
+        <span>Data</span><i aria-hidden="true">→</i>
+        <span>System that ships</span>
+      </div>
+      <p class="summary">AI Automation Analyst Intern at Dun &amp; Bradstreet. Before that, data science at Brandscapes Worldwide, and three years running vendors, sales and tech for a direct-to-consumer handicrafts business alongside my B.Tech at VIT Vellore. I have also published an IEEE conference paper on deep learning.</p>
+      <div class="actions">
+        <a class="btn" href="#projects">See my work</a>
+        <a class="plain" href="mailto:bhinitrout@gmail.com">bhinitrout@gmail.com</a>
+        <a class="plain" href="https://github.com/HEYMAN225" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+
+    <aside class="ledger" aria-labelledby="results-title">
+      <p class="label" id="results-title">Selected results</p>
+      <dl>
+        <div class="row">
+          <dt>20 days <span class="arrow">→</span> 1 day</dt>
+          <dd>Time to produce a Total Addressable Market report, after the agentic AI system I built at Dun &amp; Bradstreet</dd>
+        </div>
+        <div class="row">
+          <dt>1,900+ hours</dt>
+          <dd>Analyst time saved by an ESG supplier-assessment pipeline I helped build, across 1,500+ client reports</dd>
+        </div>
+        <div class="row">
+          <dt>₹38 cr</dt>
+          <dd>EBITDA the OWND! rollout cost the Pantaloons segment over four quarters, sized from public filings in my case study</dd>
+        </div>
+        <div class="row">
+          <dt>0.892 AUC</dt>
+          <dd>Bankruptcy scorecard built on 6 financial ratios, against 0.951 for a black-box model using 64</dd>
+        </div>
+        <div class="row">
+          <dt>+17 dB</dt>
+          <dd>Image quality over the baseline in my IEEE InC4 2026 paper</dd>
+        </div>
+      </dl>
+    </aside>
+  </section>
+
+  <section class="block" aria-labelledby="value-title">
+    <div class="section-head">
+      <h2 id="value-title">Where I add value</h2>
+      <p>My work sits where business, data and technology meet. Each one makes the other two more useful.</p>
+    </div>
+    <div class="lenses">
+      <div class="lens">
+        <h3>Business acumen</h3>
+        <p>Three years in a working MSME taught me how suppliers, customers and margins actually behave. I bring that to analysis and finish with a recommendation someone can act on.</p>
+        <ul class="evidence">
+          <li>Managed about 50 artisan vendors and 150+ customers</li>
+          <li>Full business-analysis pack for the OWND! rollout, from requirements to a RAID log</li>
+        </ul>
+      </div>
+      <div class="lens">
+        <h3>Data</h3>
+        <p>I work with data at scale and make the numbers hold up: clean train and test splits, confidence intervals, and every figure traceable to its source.</p>
+        <ul class="evidence">
+          <li>1.5M+ supply-chain data points analysed for a global FMCG brand</li>
+          <li>PySpark and Databricks pipelines at Dun &amp; Bradstreet</li>
+        </ul>
+      </div>
+      <div class="lens">
+        <h3>Technology</h3>
+        <p>I build the systems myself: agentic AI with RAG, scrapers across dozens of sources, REST APIs in Django, and deep learning models.</p>
+        <ul class="evidence">
+          <li>Agentic AI that writes market-sizing reports in a day</li>
+          <li>RoBERTa fine-tuned to 87% accuracy on adverse news</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="experience" aria-labelledby="exp-title">
+    <div class="section-head">
+      <h2 id="exp-title">Experience</h2>
+    </div>
+    <div class="jobs">
+      <article class="job">
+        <div class="job-when">
+          <span class="dates">Sep 2026 – Present</span>
+          <span class="where">Mumbai</span>
+        </div>
+        <div class="job-body">
+          <h3>Dun &amp; Bradstreet</h3>
+          <p class="role">AI Automation Analyst Intern, Business Operations</p>
+          <ul class="points">
+            <li>Built an agentic AI system using RAG and LLMs that writes <strong>Total Addressable Market reports</strong>, cutting generation time from <strong>20 days to 1 day</strong>.</li>
+            <li>Built an agentic AI system that scrapes firms' financial data from <strong>20+ sources</strong> and ingests it into a Databricks Lakehouse.</li>
+            <li>Contributed to an end-to-end <strong>ESG Supplier Assessment</strong> pipeline in Python that combines UN GFDRR climate-risk data with a negative-news monitor across 85+ sources. It has produced <strong>1,500+ client-ready reports</strong>, saving <strong>1,900+ analyst hours</strong> and cutting turnaround time by 80%.</li>
+          </ul>
+          <ul class="tags" aria-label="Tools">
+            <li>Agentic AI</li><li>RAG</li><li>LLMs</li><li>PySpark</li><li>Databricks</li><li>BeautifulSoup</li><li>python-docx</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="job-when">
+          <span class="dates">May 2025 – Jul 2025</span>
+          <span class="where">Mumbai</span>
+        </div>
+        <div class="job-body">
+          <h3>Brandscapes Worldwide</h3>
+          <p class="role">Data Science Intern, Business Analytics</p>
+          <ul class="points">
+            <li>Engineered a RAG system that lets analysts research internal data and live web sources in one place, reducing analysis time by <strong>70%</strong>.</li>
+            <li>Analysed <strong>1.5M+ data points</strong> for a leading global FMCG brand to optimise its supply chain, contributing to a <strong>30% increase in retail revenue</strong>.</li>
+            <li>Developed an adverse-news detection model by fine-tuning RoBERTa on articles scraped from 7 news portals, reaching <strong>87% accuracy</strong> and cutting manual risk-assessment effort by 70%.</li>
+          </ul>
+          <ul class="tags" aria-label="Tools">
+            <li>RAG</li><li>RoBERTa</li><li>NLP</li><li>Web scraping</li><li>Python</li><li>SQL</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="job-when">
+          <span class="dates">2023 – 2026</span>
+          <span class="where">Part-time, alongside B.Tech</span>
+        </div>
+        <div class="job-body">
+          <h3>Creative Crafts LLP</h3>
+          <p class="role">Operations, Sales &amp; Technology · D2C handicrafts MSME</p>
+          <ul class="points">
+            <li>Ran day-to-day operations for a direct-to-consumer business selling handcrafted textiles and utensils sourced straight from artisans.</li>
+            <li>Managed relationships with about <strong>50 artisan vendors</strong> and sold to <strong>150+ customers</strong>.</li>
+            <li>Built the company's <strong>first e-commerce website</strong> and early tech, then handed it over to an outsourced team.</li>
+          </ul>
+          <ul class="tags" aria-label="Skills">
+            <li>Vendor management</li><li>Sales</li><li>D2C operations</li><li>E-commerce</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="projects" aria-labelledby="proj-title">
+    <div class="section-head">
+      <h2 id="proj-title">Projects</h2>
+      <p>One business case, one credit-risk model and one research paper. Each starts from a question and ends with a number I can defend.</p>
+    </div>
+
+    <article class="project" aria-labelledby="p1">
+      <div class="project-head">
+        <p class="label">Business case study · Aditya Birla Fashion &amp; Retail</p>
+        <h3 id="p1">OWND! Rollout Decision</h3>
+        <p class="lead">Pantaloons lost 0.8 points of EBITDA margin in FY26 as ABFRL scaled its new value format, OWND!. I built the case for what to do next, using only public data.</p>
+      </div>
+      <div class="project-body">
+        <dl class="qa">
+          <div>
+            <dt>Question</dt>
+            <dd>Should ABFRL accelerate, hold or slow the OWND! rollout? I split it into three tests: is OWND! competing with Zudio, is it taking Pantaloons' customers, and is its drag on profit shrinking?</dd>
+          </div>
+          <div>
+            <dt>Data &amp; method</dt>
+            <dd>13 quarters of investor presentations, about 67,000 products from the OWND! and Pantaloons catalogues, and 1,476 stores from three store locators. I compared price bands, measured pincode co-location against fair baselines, and estimated OWND!'s unreported revenue from two equations. One Python script rebuilds every table and chart.</dd>
+          </div>
+          <div>
+            <dt>Findings</dt>
+            <dd>OWND! matches Zudio on price, with half its best-sellers at ₹500 or less. 83% of its products in shared categories sit below Pantaloons' best-seller price band, so the overlap is concentrated in T-shirts. But the margin drag has not shrunk in four quarters and has cost about ₹38 cr of EBITDA.</dd>
+          </div>
+          <div>
+            <dt>Recommendation</dt>
+            <dd>A gated hold: up to 20 stores in FY28, split between metro in-fill and a Tier 2 test, with about 40 more released only when OWND!'s own store economics turn positive. If OWND! runs at a −5% margin, accelerating instead would put about ₹23 cr a year more at risk.</dd>
+          </div>
+        </dl>
+        <div class="side">
+          <figure class="fig">
+            <p class="fig-title">Segment EBITDA margin vs the same quarter a year earlier</p>
+            <p class="fig-sub">Pantaloons segment, in the four quarters since OWND! launched</p>
+            <svg class="chart" viewBox="0 0 360 196" role="img" aria-label="Pantaloons segment EBITDA margin change versus the same quarter a year earlier: Q2 FY26 minus 1.3 points, Q3 FY26 minus 1.1, Q4 FY26 plus 0.4, Q1 FY27 minus 1.2.">
+              <path class="bar neg" d="M34.0,58.6V139.5Q34.0,143.5 38.0,143.5H70.0Q74.0,143.5 74.0,139.5V58.6Z"><title>Q2 FY26: −1.3 pp vs prior year</title></path>
+              <text class="val" x="54.0" y="160.5" text-anchor="middle">−1.3 pp</text>
+              <text class="cat" x="54.0" y="190" text-anchor="middle">Q2 FY26</text>
+              <path class="bar neg" d="M118.0,58.6V126.4Q118.0,130.4 122.0,130.4H154.0Q158.0,130.4 158.0,126.4V58.6Z"><title>Q3 FY26: −1.1 pp vs prior year</title></path>
+              <text class="val" x="138.0" y="147.4" text-anchor="middle">−1.1 pp</text>
+              <text class="cat" x="138.0" y="190" text-anchor="middle">Q3 FY26</text>
+              <path class="bar pos" d="M202.0,58.6V36.5Q202.0,32.5 206.0,32.5H238.0Q242.0,32.5 242.0,36.5V58.6Z"><title>Q4 FY26: +0.4 pp vs prior year</title></path>
+              <text class="val" x="222.0" y="24.5" text-anchor="middle">+0.4 pp</text>
+              <text class="cat" x="222.0" y="190" text-anchor="middle">Q4 FY26</text>
+              <path class="bar neg" d="M286.0,58.6V132.9Q286.0,136.9 290.0,136.9H322.0Q326.0,136.9 326.0,132.9V58.6Z"><title>Q1 FY27: −1.2 pp vs prior year</title></path>
+              <text class="val" x="306.0" y="153.9" text-anchor="middle">−1.2 pp</text>
+              <text class="cat" x="306.0" y="190" text-anchor="middle">Q1 FY27</text>
+              <line class="axis" x1="12" x2="348" y1="58.6" y2="58.6"/>
+            </svg>
+            <figcaption><b>Fig. 1</b>Q4's gain is mostly festive-sale timing. Pooled with Q3, the second half of FY26 was still −0.6 pp.</figcaption>
+          </figure>
+          <ul class="tags" aria-label="Business analysis deliverables">
+            <li>Requirements &amp; acceptance tests</li><li>Gap analysis</li><li>Options &amp; cost-benefit</li><li>RACI</li><li>RAID log</li><li>Traceability matrix</li><li>Change management</li>
+          </ul>
+          <div class="links">
+            <a href="https://claude.ai/artifact/MWkxbBFew1o3dV69nsQeYN" target="_blank" rel="noopener">Read the full report ↗</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="project" aria-labelledby="p2">
+      <div class="project-head">
+        <p class="label">Credit risk model · Live Streamlit app</p>
+        <h3 id="p2">Company Bankruptcy Scorecard</h3>
+        <p class="lead">A credit score that predicts whether a company will go bankrupt within a year, and shows which financial ratios pulled its score down.</p>
+      </div>
+      <div class="project-body">
+        <dl class="qa">
+          <div>
+            <dt>Question</dt>
+            <dd>Can a scorecard that a bank can audit, using only a handful of ratios, come close to a black-box model?</dd>
+          </div>
+          <div>
+            <dt>Data &amp; method</dt>
+            <dd>5,850 Polish companies with 64 financial ratios each. I binned each ratio by Weight of Evidence so risk changes steadily from bin to bin, kept ratios by Information Value, correlation and cross-validated AUC, and fitted a logistic regression scaled to points: 600 points means 50-to-1 odds of staying solvent, and every 20 points doubles them. LightGBM on all 64 ratios is the benchmark, with bootstrap confidence intervals on both.</dd>
+          </div>
+          <div>
+            <dt>Result</dt>
+            <dd>Test AUC of 0.892 with 6 ratios, against 0.951 for LightGBM with 64. The scorecard gives up 0.059 AUC in exchange for a score anyone can trace back to its inputs, which is what lenders need to explain and audit decisions.</dd>
+          </div>
+        </dl>
+        <div class="side">
+          <div class="stats">
+            <div><span class="v">0.892</span><span class="k">Test AUC (95% CI 0.865–0.916)</span></div>
+            <div><span class="v">0.784</span><span class="k">Gini</span></div>
+            <div><span class="v">0.671</span><span class="k">KS statistic</span></div>
+          </div>
+          <figure class="fig">
+            <p class="fig-title">Companies that went bankrupt, by risk band</p>
+            <p class="fig-sub">1,755 test-set companies the model never saw</p>
+            <svg class="chart" viewBox="0 0 360 196" role="img" aria-label="Share of test-set companies that went bankrupt, by risk band: A 0.0 percent, B 1.4, C 5.8, D 18.1, E 36.7.">
+              <text class="val" x="45.6" y="158.0" text-anchor="middle">0.0%</text>
+              <text class="cat" x="45.6" y="190" text-anchor="middle">Band A</text>
+              <path class="bar lo" d="M94.8,166.0V163.4Q94.8,160.7 97.4,160.7H128.2Q130.8,160.7 130.8,163.4V166.0Z"><title>Band B (predicted 1–3%): 1.4% of 769 companies went bankrupt</title></path>
+              <text class="val" x="112.8" y="152.7" text-anchor="middle">1.4%</text>
+              <text class="cat" x="112.8" y="190" text-anchor="middle">Band B</text>
+              <path class="bar lo" d="M162.0,166.0V148.1Q162.0,144.1 166.0,144.1H194.0Q198.0,144.1 198.0,148.1V166.0Z"><title>Band C (predicted 3–8%): 5.8% of 243 companies went bankrupt</title></path>
+              <text class="val" x="180.0" y="136.1" text-anchor="middle">5.8%</text>
+              <text class="cat" x="180.0" y="190" text-anchor="middle">Band C</text>
+              <path class="bar hi" d="M229.2,166.0V101.5Q229.2,97.5 233.2,97.5H261.2Q265.2,97.5 265.2,101.5V166.0Z"><title>Band D (predicted 8–20%): 18.1% of 155 companies went bankrupt</title></path>
+              <text class="val" x="247.2" y="89.5" text-anchor="middle">18.1%</text>
+              <text class="cat" x="247.2" y="190" text-anchor="middle">Band D</text>
+              <path class="bar hi" d="M296.4,166.0V31.1Q296.4,27.1 300.4,27.1H328.4Q332.4,27.1 332.4,31.1V166.0Z"><title>Band E (predicted 20% and above): 36.7% of 188 companies went bankrupt</title></path>
+              <text class="val" x="314.4" y="19.1" text-anchor="middle">36.7%</text>
+              <text class="cat" x="314.4" y="190" text-anchor="middle">Band E</text>
+              <line class="axis" x1="12" x2="348" y1="166.0" y2="166.0"/>
+            </svg>
+            <figcaption><b>Fig. 2</b>Bands D and E hold 20% of companies but 80% of the bankruptcies.</figcaption>
+          </figure>
+          <div class="links">
+            <a class="btn" href="https://company-bankruptcy-scorecard-bhinitrout.streamlit.app/" target="_blank" rel="noopener">Try the live app ↗</a>
+            <a href="https://github.com/HEYMAN225/company-bankruptcy-scorecard" target="_blank" rel="noopener">Code on GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="project" aria-labelledby="p3">
+      <div class="project-head">
+        <p class="label">IEEE conference paper · InC4 2026</p>
+        <h3 id="p3">Deep JSCC for Robust Image Transmission over Multipath OFDM Channels</h3>
+        <p class="lead">Neural radio transmitters usually need a channel model they can backpropagate through, which real hardware doesn't provide. This paper trains the transmitter with reinforcement learning instead.</p>
+      </div>
+      <div class="project-body">
+        <dl class="qa">
+          <div>
+            <dt>Problem</dt>
+            <dd>Deep Joint Source-Channel Coding sends images over noisy wireless links, but existing models only train over channels written as differentiable maths. That rules out real, black-box OFDM systems with multipath fading.</dd>
+          </div>
+          <div>
+            <dt>Approach</dt>
+            <dd>The CNN encoder acts as a reinforcement-learning agent, updated with REINFORCE policy gradients over a black-box OFDM simulator (64 subcarriers, 8-tap Rayleigh fading). A two-stage coarse-to-fine residual receiver rebuilds the image. Training runs in three phases: AWGN pre-training, RL over OFDM, then SSIM fine-tuning.</dd>
+          </div>
+          <div>
+            <dt>Result</dt>
+            <dd>29.05 dB PSNR (0.91 SSIM) on SVHN and 22.17 dB (0.73 SSIM) on CIFAR-10. That is up to 17 dB and 10.6 dB better than a baseline trained on a simple noise channel, which fails outright on multipath fading. Images stay recognisable even at 0 dB SNR.</dd>
+          </div>
+        </dl>
+        <div class="side">
+          <div class="stats">
+            <div><span class="v">29.05 dB</span><span class="k">PSNR on SVHN (0.91 SSIM)</span></div>
+            <div><span class="v">22.17 dB</span><span class="k">PSNR on CIFAR-10 (0.73 SSIM)</span></div>
+            <div><span class="v">+17 dB</span><span class="k">Over the AWGN-trained baseline</span></div>
+          </div>
+          <ul class="tags" aria-label="Methods">
+            <li>Reinforcement learning</li><li>Policy gradients</li><li>CNNs</li><li>OFDM</li><li>SSIM / PSNR</li>
+          </ul>
+          <p class="byline">Bhinit Rout and M Monica Subashini, School of Electrical Engineering, VIT Vellore. 2026 IEEE International Conference on Contemporary Computing and Communications (InC4).</p>
+          <div class="links">
+            <a href="https://github.com/HEYMAN225/Deep-Joint-Source-Channel-Coding-for-Robust-Image-Transmission-Over-Multipath-OFDM-Channels" target="_blank" rel="noopener">Code and trained models ↗</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="block" id="toolkit" aria-labelledby="tool-title">
+    <div class="section-head">
+      <h2 id="tool-title">Toolkit</h2>
+    </div>
+    <dl class="toolkit">
+      <div>
+        <dt>Business analysis</dt>
+        <dd><ul class="tags"><li>Requirements &amp; acceptance criteria</li><li>Gap analysis</li><li>Options &amp; cost-benefit</li><li>RACI &amp; stakeholder mapping</li><li>RAID logs</li><li>Vendor management</li></ul></dd>
+      </div>
+      <div>
+        <dt>Languages</dt>
+        <dd><ul class="tags"><li>Python</li><li>SQL</li></ul></dd>
+      </div>
+      <div>
+        <dt>AI &amp; machine learning</dt>
+        <dd><ul class="tags"><li>RAG</li><li>Agentic AI</li><li>LLMs</li><li>NLP</li><li>Transformers</li><li>Deep learning</li><li>Reinforcement learning</li></ul></dd>
+      </div>
+      <div>
+        <dt>Data engineering</dt>
+        <dd><ul class="tags"><li>PySpark</li><li>Databricks</li><li>ETL pipelines</li><li>Data ingestion</li><li>Web scraping</li></ul></dd>
+      </div>
+      <div>
+        <dt>Analytics &amp; modelling</dt>
+        <dd><ul class="tags"><li>Excel</li><li>pandas</li><li>Credit scorecards (WoE, IV)</li><li>LightGBM</li><li>Streamlit</li></ul></dd>
+      </div>
+      <div>
+        <dt>Software</dt>
+        <dd><ul class="tags"><li>Django REST Framework</li><li>System design</li></ul></dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="block" aria-labelledby="edu-title">
+    <div class="section-head">
+      <h2 id="edu-title">Education</h2>
+    </div>
+    <div class="edu">
+      <span class="dates">2022 – 2026</span>
+      <div>
+        <h3>B.Tech, Electrical and Electronics Engineering</h3>
+        <p>Vellore Institute of Technology (VIT), Vellore</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block contact" id="contact" aria-labelledby="contact-title">
+    <p class="label">Contact</p>
+    <h2 id="contact-title">Let's talk about the problem you're solving.</h2>
+    <p class="summary">Open to software, business analyst and data roles. Email is the fastest way to reach me.</p>
+    <div class="contact-row">
+      <div class="email">
+        <output id="email-text">bhinitrout@gmail.com</output>
+        <button class="copy" id="copy-email" type="button">Copy</button>
+      </div>
+      <a href="https://github.com/HEYMAN225" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>Bhinit Kumar Rout · Mumbai, India</span>
+    <span>Software &amp; Business Analyst</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy-email');
+  var out = document.getElementById('email-text');
+  if (!btn || !out) return;
+  function selectText() {
+    try {
+      var r = document.createRange();
+      r.selectNodeContents(out);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+      btn.textContent = 'Selected';
+    } catch (e) {}
+  }
+  btn.addEventListener('click', function () {
+    var text = out.textContent.trim();
+    try {
+      navigator.clipboard.writeText(text).then(function () {
+        btn.textContent = 'Copied';
+        setTimeout(function () { btn.textContent = 'Copy'; }, 1600);
+      }).catch(selectText);
+    } catch (e) { selectText(); }
+  });
+})();
+</script>
+</body>
+</html>
