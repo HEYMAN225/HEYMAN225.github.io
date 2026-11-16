@@ -3,12 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bhinit Kumar Rout · Software &amp; Business Analyst</title>
+<meta name="description" content="Portfolio of Bhinit Kumar Rout, software and business analyst in Mumbai: agentic AI at Dun & Bradstreet, a bankruptcy scorecard, the OWND! case study and an IEEE paper.">
+<link rel="canonical" href="https://heyman225.github.io/">
 <meta property="og:title" content="Bhinit Kumar Rout · Software & Business Analyst">
 <meta property="og:description" content="Business questions, data and the systems that answer them: Dun & Bradstreet, Brandscapes, the OWND! case study, a bankruptcy scorecard and an IEEE paper.">
 <meta property="og:type" content="website">
-<title>Bhinit Kumar Rout</title>
-<meta name="description" content="Portfolio of Bhinit Kumar Rout, Software and Business Analyst in Mumbai.">
+<meta property="og:url" content="https://heyman225.github.io/">
+<meta property="og:image" content="https://heyman225.github.io/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000'/%3E%3Ctext x='29' y='46' font-family='Segoe UI,Helvetica,Arial,sans-serif' font-size='38' font-weight='700' fill='%23F3F4F6' text-anchor='middle'%3EB%3C/text%3E%3Ccircle cx='49' cy='43' r='4.5' fill='%237D95FF'/%3E%3C/svg%3E">
 <script>
 /* Turn on motion only when the visitor hasn't asked for reduced motion; without this class every element is shown in its final state. */
 (function () {
@@ -21,15 +28,17 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&display=swap">
 <style>
 :root { color-scheme: dark; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+html { scrollbar-color: #2E3139 #000000; accent-color: #7D95FF; }
 body { margin: 0; overflow-x: clip; }
 img { max-width: 100%; }
 [hidden] { display: none !important; }
 /* Layout: one 1080px column. Hero splits name and thesis (left) from a ledger of results (right);
    projects pair a Question / Method / Result write-up with one figure from the work itself. */
-/* Black theme: true black page, graphite surfaces, the existing blue lifted so it reads on black. */
+/* Black theme: true black page, graphite surfaces, the existing blue lifted so it reads on black.
+   One type family: Bricolage Grotesque, its optical size following the text size. */
 :root {
   --bg: #000000;
   --surface: #0D0E11;
@@ -39,14 +48,12 @@ img { max-width: 100%; }
   --rule: #24262C;
   --accent: #7D95FF;
   --accent-soft: #10152B;
-  --accent-glow: rgba(125, 149, 255, 0.55);
   --warm: #FF7B5E;
   --bar-lo: #36427A;
-  --ease-out: cubic-bezier(.2, .7, .2, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 
   --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --font-body: "Bricolage Grotesque", "Segoe UI", system-ui, -apple-system, sans-serif;
 
   --step--1: 0.8125rem;
   --step-0: 1rem;
@@ -60,23 +67,25 @@ img { max-width: 100%; }
 body {
   background: var(--bg);
   color: var(--ink);
-  font: 400 var(--step-0)/1.62 var(--font-body);
+  font: 400 var(--step-0)/1.6 var(--font-body);
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
   -webkit-font-smoothing: antialiased;
 }
 .wrap { max-width: 1080px; margin: 0 auto; }
-h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; letter-spacing: -0.015em; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; letter-spacing: -0.015em; line-height: 1.2; }
 p { margin: 0; }
 a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-a:hover { text-decoration-thickness: 2px; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 ul { margin: 0; padding: 0; }
-.label {
-  font: 500 var(--step--1)/1.3 var(--font-mono);
-  text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);
+.num, .dates, time { font-variant-numeric: tabular-nums; }
+
+/* Skip link: the first stop for keyboard users, shown only when focused. */
+.skip {
+  position: absolute; left: 16px; top: -64px; z-index: 30;
+  padding: 10px 14px; border-radius: 4px; background: var(--accent); color: #000; font-weight: 600; text-decoration: none;
 }
-.num { font-variant-numeric: tabular-nums; }
+.skip:focus { top: 12px; }
 
 /* Top bar */
 .top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-block: 18px; position: sticky; top: 0; z-index: 10; }
@@ -89,69 +98,61 @@ ul { margin: 0; padding: 0; }
 }
 .top.scrolled::before { opacity: 1; }
 .progress { position: absolute; left: calc(50% - 50vw); width: 100vw; bottom: 0; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; pointer-events: none; }
-.mark { font: 700 var(--step-1)/1 var(--font-display); color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
+.mark { font: 600 var(--step-1)/1 var(--font-display); color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
 .mark span { color: var(--accent); }
 .top nav { display: flex; flex-wrap: wrap; gap: 6px 20px; }
 .top nav a { color: var(--ink-2); text-decoration: none; font-size: 0.9375rem; }
-.top nav a:hover { color: var(--accent); }
 .top nav a[aria-current] { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 7px; }
 
 /* Hero */
 .hero { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 56px; padding-block: 40px 72px; align-items: start; }
 .hero-main { display: grid; gap: 22px; min-width: 0; }
-.hero h1 { font-size: var(--step-4); font-weight: 800; line-height: 0.95; letter-spacing: -0.035em; }
+.hero h1 { font-size: var(--step-4); font-weight: 650; line-height: 0.95; letter-spacing: -0.04em; }
+.role-line { font: 500 var(--step-1)/1.3 var(--font-body); color: var(--ink-2); margin-top: -8px; }
 .thesis { font: 500 var(--step-2)/1.32 var(--font-display); color: var(--ink); max-width: 30ch; letter-spacing: -0.01em; }
-.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; font: 500 0.875rem/1.3 var(--font-mono); }
-.flow span { padding: 6px 10px; border: 1px solid var(--rule); border-radius: 3px; background: var(--surface); color: var(--ink); }
-.flow i { font-style: normal; color: var(--accent); }
-.flow span:last-child { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+/* How I work: three steps. Each arrow travels with the step it points to, so a wrapped row never ends on a loose arrow. */
+.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; font: 500 0.875rem/1.3 var(--font-body); }
+.flow .hop { display: inline-flex; align-items: center; gap: 10px; }
+.flow .chip { padding: 6px 10px; border: 1px solid var(--rule); border-radius: 3px; background: var(--surface); color: var(--ink); }
+.flow i { font-style: normal; color: var(--accent); display: inline-block; }
+.flow .hop:last-child .chip { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
 .summary { color: var(--ink-2); max-width: 60ch; }
-.actions { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; }
+.actions { display: flex; flex-wrap: wrap; gap: 4px 22px; align-items: center; }
 .btn {
-  display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px;
+  display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; min-height: 44px;
   background: var(--accent); color: var(--bg); text-decoration: none; font-weight: 600; border-radius: 4px;
 }
-.btn:hover { text-decoration: none; filter: brightness(1.08); }
-.actions .plain { font-weight: 500; }
+/* Text links in action rows get a 44px-tall hit area without changing how they look. */
+.actions .plain, .links a:not(.btn), .contact-row > a { display: inline-block; padding-block: 10px; font-weight: 500; }
 
 .ledger { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 24px 24px 8px; min-width: 0; }
+.ledger-title { font: 600 0.9375rem/1.3 var(--font-body); color: var(--ink-2); }
 .ledger dl { margin: 14px 0 0; }
 .ledger .row { display: grid; gap: 2px; padding-block: 14px; border-top: 1px solid var(--rule); }
-.ledger dt { font: 700 1.75rem/1.1 var(--font-display); letter-spacing: -0.02em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.ledger dt { font: 600 1.75rem/1.1 var(--font-display); letter-spacing: -0.025em; color: var(--ink); font-variant-numeric: tabular-nums; }
 .ledger dt .arrow { color: var(--accent); font-weight: 500; }
 .ledger dd { margin: 0; color: var(--ink-2); font-size: 0.9375rem; line-height: 1.5; }
 
 /* Sections */
 section.block { padding-block: 64px; position: relative; scroll-margin-top: 64px; }
-/* Section divider: a short blue lead-in, then the rule. It draws across when the section scrolls in. */
+/* Section divider: a short blue lead-in, then the rule. */
 section.block::before {
   content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px;
   background: linear-gradient(90deg, var(--accent) 0 56px, var(--rule) 56px);
-  transform-origin: left;
 }
 .section-head { display: grid; gap: 10px; margin-bottom: 36px; max-width: 62ch; }
-.section-head h2 { font-size: var(--step-3); font-weight: 700; }
+.section-head h2 { font-size: var(--step-3); font-weight: 600; letter-spacing: -0.025em; }
 .section-head p { color: var(--ink-2); }
-
-/* Value lenses */
-.lenses { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; }
-.lens { display: grid; gap: 12px; align-content: start; min-width: 0; }
-.lens h3 { font-size: var(--step-1); font-weight: 700; display: flex; align-items: baseline; gap: 10px; }
-.lens h3 .label { color: var(--accent); }
-.lens p { color: var(--ink-2); }
-.evidence { list-style: none; display: grid; gap: 8px; }
-.evidence li { padding-left: 16px; position: relative; font-size: 0.9375rem; }
-.evidence li::before { content: ""; position: absolute; left: 0; top: 0.68em; width: 6px; height: 6px; border-radius: 1px; background: var(--accent); }
 
 /* Experience */
 .jobs { display: grid; }
 .job { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 32px; padding-block: 30px; border-top: 1px solid var(--rule); }
 .job:first-child { border-top: 0; padding-top: 0; }
 .job-when { display: grid; gap: 6px; align-content: start; }
-.job-when .dates { font: 500 0.875rem/1.4 var(--font-mono); color: var(--ink); }
+.job-when .dates { font: 500 0.9375rem/1.4 var(--font-body); color: var(--ink); }
 .job-when .where { font-size: 0.875rem; color: var(--muted); }
 .job-body { display: grid; gap: 12px; min-width: 0; }
-.job-body h3 { font-size: var(--step-2); font-weight: 700; }
+.job-body h3 { font-size: var(--step-2); font-weight: 600; letter-spacing: -0.02em; }
 .role { color: var(--ink-2); font-weight: 500; margin-top: -6px; }
 /* Company logos: a square tile filling the date column. D&B's white mark sits on graphite; Brandscapes' colour wordmark needs white. */
 .logo { display: block; position: relative; width: 100%; aspect-ratio: 1; margin-top: 14px; border-radius: 14px; }
@@ -167,7 +168,7 @@ section.block::before {
 
 .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
 .tags li {
-  font: 400 0.8125rem/1.3 var(--font-mono); color: var(--ink-2);
+  font: 400 0.8125rem/1.3 var(--font-body); color: var(--ink-2);
   padding: 4px 9px; border: 1px solid var(--rule); border-radius: 3px; background: var(--surface);
 }
 
@@ -175,12 +176,13 @@ section.block::before {
 .project { display: grid; gap: 28px; padding-block: 40px; border-top: 1px solid var(--rule); }
 .project:first-of-type { border-top: 0; padding-top: 0; }
 .project-head { display: grid; gap: 10px; max-width: 72ch; }
-.project-head h3 { font-size: var(--step-3); font-weight: 700; line-height: 1.12; }
+.project-head h3 { font-size: var(--step-3); font-weight: 600; line-height: 1.12; letter-spacing: -0.025em; }
+.project-head .meta { font: 500 0.9375rem/1.4 var(--font-body); color: var(--muted); margin-top: -2px; }
 .project-head .lead { color: var(--ink-2); font-size: var(--step-1); line-height: 1.5; }
 .project-body { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 44px; align-items: start; }
 .qa { margin: 0; display: grid; gap: 18px; min-width: 0; }
 .qa div { display: grid; gap: 4px; }
-.qa dt { font: 500 var(--step--1)/1.3 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); }
+.qa dt { font: 600 0.9375rem/1.3 var(--font-body); color: var(--accent); }
 .qa dd { margin: 0; color: var(--ink); }
 .side { display: grid; gap: 18px; min-width: 0; }
 figure.fig { margin: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 18px 18px 14px; display: grid; gap: 10px; }
@@ -193,17 +195,16 @@ figure.fig { margin: 0; background: var(--surface); border: 1px solid var(--rule
 .chart .bar.hi { fill: var(--accent); }
 .chart .bar.lo { fill: var(--bar-lo); }
 .chart .axis { stroke: var(--ink-2); stroke-width: 1.25; }
-.chart .val { font: 500 12.5px var(--font-mono); fill: var(--ink); font-variant-numeric: tabular-nums; }
+.chart .val { font: 500 13px var(--font-body); fill: var(--ink); font-variant-numeric: tabular-nums; }
 .chart .cat { font: 400 12px var(--font-body); fill: var(--muted); }
 figcaption { font-size: 0.8125rem; color: var(--ink-2); line-height: 1.5; border-top: 1px solid var(--rule); padding-top: 10px; }
-figcaption b { font: 500 0.75rem/1 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
 
 .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
 .stats div { padding: 14px 14px 12px; display: grid; gap: 2px; border-left: 1px solid var(--rule); min-width: 0; }
 .stats div:first-child { border-left: 0; }
-.stats .v { font: 700 1.375rem/1.15 var(--font-display); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+.stats .v { font: 600 1.375rem/1.15 var(--font-display); letter-spacing: -0.015em; font-variant-numeric: tabular-nums; }
 .stats .k { font-size: 0.8125rem; color: var(--muted); line-height: 1.35; }
-.links { display: flex; flex-wrap: wrap; gap: 8px 22px; font-weight: 500; }
+.links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 22px; }
 .byline { font-size: 0.875rem; color: var(--muted); }
 
 /* Toolkit */
@@ -215,25 +216,36 @@ figcaption b { font: 500 0.75rem/1 var(--font-mono); letter-spacing: 0.06em; tex
 
 /* Education & contact */
 .edu { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 32px; align-items: baseline; }
-.edu .dates { font: 500 0.875rem/1.4 var(--font-mono); }
-.edu h3 { font-size: var(--step-1); font-weight: 700; }
+.edu .dates { font: 500 0.9375rem/1.4 var(--font-body); }
+.edu h3 { font-size: var(--step-1); font-weight: 600; }
 .edu p { color: var(--ink-2); }
 
 .contact { display: grid; gap: 22px; }
-.contact h2 { font-size: var(--step-4); font-weight: 800; line-height: 1; letter-spacing: -0.035em; max-width: 14ch; }
+.contact h2 { font-size: var(--step-4); font-weight: 650; line-height: 1; letter-spacing: -0.04em; max-width: 15ch; }
 .contact-row { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; }
 .email { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 10px; }
-.email output { font: 500 var(--step-1)/1.3 var(--font-mono); color: var(--ink); user-select: all; overflow-wrap: anywhere; }
+.email output { font: 500 var(--step-1)/1.3 var(--font-body); color: var(--ink); user-select: all; overflow-wrap: anywhere; }
 .copy {
-  font: 500 0.8125rem/1 var(--font-mono); padding: 8px 12px; cursor: pointer;
-  background: var(--surface); color: var(--ink); border: 1px solid var(--rule); border-radius: 3px;
+  font: 500 0.875rem/1 var(--font-body); padding: 10px 14px; min-height: 40px; cursor: pointer;
+  background: var(--surface); color: var(--ink); border: 1px solid var(--rule); border-radius: 4px;
 }
-.copy:hover { border-color: var(--accent); color: var(--accent); }
 
 footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.875rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
 
 .sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-.btn:hover { box-shadow: 0 0 0 4px var(--accent-soft), 0 0 26px -6px var(--accent-glow); }
+
+/* Press feedback on every button: a quick, subtle scale that confirms the click. */
+.btn, .copy { transition: transform 160ms var(--ease-out), filter .15s ease, border-color .15s ease, color .15s ease; }
+.btn:active, .copy:active { transform: scale(0.97); }
+a { transition: color .15s ease; }
+
+/* Hover states only for a real pointer; on touch screens a tap would leave them stuck on. */
+@media (hover: hover) and (pointer: fine) {
+  a:hover { text-decoration-thickness: 2px; }
+  .top nav a:hover { color: var(--accent); }
+  .btn:hover { text-decoration: none; filter: brightness(1.08); }
+  .copy:hover { border-color: var(--accent); color: var(--accent); }
+}
 
 /* Hero backdrop: a faint dot grid ("data points"), with a blue patch that follows the cursor on desktop. */
 .hero { position: relative; isolation: isolate; }
@@ -254,57 +266,54 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var
 .hero.lit::after { opacity: 1; }
 
 /* Flow pulse: a signal runs Business question → Data → System that ships. */
-.flow i { display: inline-block; }
-.flow span, .flow i { transition: border-color .25s ease, color .25s ease, box-shadow .35s ease, transform .25s var(--ease-out); }
-.flow span.lit { border-color: var(--accent); color: var(--ink); box-shadow: 0 0 0 1px var(--accent), 0 0 22px -2px var(--accent-glow); }
+.flow .chip, .flow i { transition: border-color .2s ease, color .2s ease, transform .25s var(--ease-out); }
+.flow .chip.lit { border-color: var(--accent); color: var(--ink); }
 .flow i.lit { transform: translateX(4px); color: var(--ink); }
 
-/* Everything below runs only with .motion (set in <head> unless reduced motion is on). */
+/* Everything below runs only with .motion (set in <head> unless reduced motion is on).
+   Two moments, nothing else moves on scroll: the hero settles in and its results count up,
+   and each chart's bars grow from the zero line when it comes into view. */
 @keyframes rise { from { transform: translateY(110%); } to { transform: none; } }
-@keyframes fade-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes fade-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
 /* 1. Page load: name rises word by word, then the rest of the hero settles in. */
 .motion .hero h1 .w { display: inline-block; overflow: hidden; vertical-align: top; padding-block: .1em; margin-block: -.1em; }
-.motion .hero h1 .w > span { display: inline-block; animation: rise 1s var(--ease-out) both; animation-delay: calc(var(--i) * 90ms + 120ms); }
-.motion .hero-main > .label, .motion .thesis, .motion .flow, .motion .summary, .motion .actions, .motion .ledger { animation: fade-up .8s var(--ease-out) both; }
-.motion .thesis { animation-delay: 380ms; }
-.motion .flow { animation-delay: 470ms; }
-.motion .summary { animation-delay: 560ms; }
-.motion .actions { animation-delay: 640ms; }
-.motion .ledger { animation-delay: 520ms; }
+.motion .hero h1 .w > span { display: inline-block; animation: rise .7s var(--ease-out) both; animation-delay: calc(var(--i) * 60ms + 80ms); }
+.motion .role-line, .motion .thesis, .motion .flow, .motion .summary, .motion .actions, .motion .ledger { animation: fade-up .6s var(--ease-out) both; }
+.motion .role-line { animation-delay: 220ms; }
+.motion .thesis { animation-delay: 280ms; }
+.motion .flow { animation-delay: 340ms; }
+.motion .summary { animation-delay: 400ms; }
+.motion .actions { animation-delay: 460ms; }
+.motion .ledger { animation-delay: 320ms; }
 
 /* 2. Results land one row at a time as the numbers count up. */
-.motion .ledger .row { opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .6s var(--ease-out); transition-delay: calc(var(--i, 0) * 130ms); }
+.motion .ledger .row { opacity: 0; transform: translateY(8px); transition: opacity .4s ease, transform .5s var(--ease-out); transition-delay: calc(var(--i, 0) * 80ms); }
 .motion .ledger.in .row { opacity: 1; transform: none; }
 
-/* 3. Section dividers draw across and headings rise as each section scrolls in. */
-.motion section.block::before { transform: scaleX(0); transition: transform 1.2s cubic-bezier(.65, 0, .35, 1); }
-.motion section.block.in::before { transform: none; }
-.motion section.block h2 { overflow: hidden; padding-bottom: .12em; margin-bottom: -.12em; }
-.motion section.block h2 .rise { display: block; transform: translateY(115%); transition: transform .9s var(--ease-out) .15s; }
-.motion section.block.in h2 .rise { transform: none; }
-
-/* 4. Chart bars grow out of the zero line; values appear once each bar lands. */
-.motion .chart .bar { transform-box: fill-box; transform-origin: 50% 100%; transform: scaleY(0); transition: transform .9s var(--ease-out); transition-delay: var(--d, 0s); }
+/* 3. Chart bars grow out of the zero line; values appear once each bar lands. */
+.motion .chart .bar { transform-box: fill-box; transform-origin: 50% 100%; transform: scaleY(0); transition: transform .7s var(--ease-out); transition-delay: var(--d, 0s); }
 .motion .chart .bar.neg { transform-origin: 50% 0%; }
-.motion .chart .val { opacity: 0; transition: opacity .5s ease; transition-delay: calc(var(--d, 0s) + .45s); }
+.motion .chart .val { opacity: 0; transition: opacity .4s ease; transition-delay: calc(var(--d, 0s) + .35s); }
 .motion .chart.in .bar { transform: none; }
 .motion .chart.in .val { opacity: 1; }
 
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
-  a, .btn, .copy { transition: color .15s ease, border-color .15s ease, filter .15s ease, box-shadow .25s ease; }
 }
 @media print {
   .top { position: static; }
-  .hero::before, .hero::after, .progress { display: none; }
-  .motion .ledger .row, .motion .chart .bar, .motion .chart .val, .motion section.block h2 .rise, .motion section.block::before { opacity: 1 !important; transform: none !important; }
+  .hero::before, .hero::after, .progress, .skip { display: none; }
+  .motion .ledger .row, .motion .chart .bar, .motion .chart .val { opacity: 1 !important; transform: none !important; }
 }
 
+/* Desktop: the hero has the first screen to itself; the next section starts below the fold. */
+@media (min-width: 881px) {
+  .hero { min-height: calc(100svh - 40px); align-content: center; padding-block: 24px 56px; }
+}
 @media (max-width: 880px) {
   .hero { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-block: 20px 56px; }
   .project-body { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-  .lenses { grid-template-columns: minmax(0, 1fr); gap: 28px; }
 }
 @media (max-width: 640px) {
   .job, .toolkit > div, .edu { grid-template-columns: minmax(0, 1fr); gap: 10px; }
@@ -313,13 +322,17 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var
   .stats div { border-left: 0; border-top: 1px solid var(--rule); }
   .stats div:first-child { border-top: 0; }
   .ledger { padding: 20px 18px 6px; }
-  .top { position: static; }
+  .top { position: static; padding-block: 12px 4px; row-gap: 0; }
+  .top nav { gap: 0 20px; }
+  .top nav a { display: inline-block; padding-block: 12px; }
+  .mark { display: inline-block; padding-block: 12px; }
   .progress { display: none; }
   .logo { width: 112px; margin-top: 8px; }
 }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="wrap">
   <header class="top">
     <a class="mark" href="#name">Bhinit<span>.</span></a>
@@ -332,26 +345,27 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var
     <span class="progress" aria-hidden="true"></span>
   </header>
 
+  <main id="main">
   <section class="hero" aria-labelledby="name">
     <div class="hero-main">
-      <p class="label">Software &amp; Business Analyst · Mumbai</p>
       <h1 id="name"><span class="w"><span style="--i:0">Bhinit</span></span> <span class="w"><span style="--i:1">Kumar</span></span> <span class="w"><span style="--i:2">Rout</span></span></h1>
+      <p class="role-line">Software and business analyst in Mumbai</p>
       <p class="thesis">I take a business question, find the data behind it, and build the software that answers it at scale.</p>
       <div class="flow" aria-label="How I work: business question, then data, then a system that ships">
-        <span>Business question</span><i aria-hidden="true">→</i>
-        <span>Data</span><i aria-hidden="true">→</i>
-        <span>System that ships</span>
+        <span class="chip">Business question</span>
+        <span class="hop"><i aria-hidden="true">→</i><span class="chip">Data</span></span>
+        <span class="hop"><i aria-hidden="true">→</i><span class="chip">System that ships</span></span>
       </div>
       <p class="summary">AI Automation Analyst Intern at Dun &amp; Bradstreet. Before that, data science at Brandscapes Worldwide, and three years running vendors, sales and tech for a direct-to-consumer handicrafts business alongside my B.Tech at VIT Vellore. I have also published an IEEE conference paper on deep learning.</p>
       <div class="actions">
-        <a class="btn" href="#projects">See my work</a>
+        <a class="btn" href="#projects">See my projects</a>
         <a class="plain" href="mailto:bhinitrout@gmail.com">bhinitrout@gmail.com</a>
         <a class="plain" href="https://github.com/HEYMAN225" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
     </div>
 
     <aside class="ledger" aria-labelledby="results-title">
-      <p class="label" id="results-title">Selected results</p>
+      <h2 class="ledger-title" id="results-title">Selected results</h2>
       <dl>
         <div class="row">
           <dt>20 days <span class="arrow">→</span> <span class="count" data-from="20" data-to="1" data-unit="day">1 day</span></dt>
@@ -375,39 +389,6 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var
         </div>
       </dl>
     </aside>
-  </section>
-
-  <section class="block" aria-labelledby="value-title">
-    <div class="section-head">
-      <h2 id="value-title">Where I add value</h2>
-      <p>My work sits where business, data and technology meet. Each one makes the other two more useful.</p>
-    </div>
-    <div class="lenses">
-      <div class="lens">
-        <h3>Business acumen</h3>
-        <p>Three years in a working startup taught me how suppliers, customers and margins actually behave. I bring that to analysis and finish with a recommendation someone can act on.</p>
-        <ul class="evidence">
-          <li>Managed about 50 artisan vendors and 150+ customers</li>
-          <li>Full business-analysis pack for the OWND! rollout, from requirements to a RAID log</li>
-        </ul>
-      </div>
-      <div class="lens">
-        <h3>Data</h3>
-        <p>I work with data at scale and make the numbers hold up: clean train and test splits, confidence intervals, and every figure traceable to its source.</p>
-        <ul class="evidence">
-          <li>1.5M+ supply-chain data points analysed for a global FMCG brand</li>
-          <li>PySpark and Databricks pipelines at Dun &amp; Bradstreet</li>
-        </ul>
-      </div>
-      <div class="lens">
-        <h3>Technology</h3>
-        <p>I build the systems myself: agentic AI with RAG, scrapers across dozens of sources, REST APIs in Django, and deep learning models.</p>
-        <ul class="evidence">
-          <li>Agentic AI that writes market-sizing reports in a day</li>
-          <li>RoBERTa fine-tuned to 87% accuracy on adverse news</li>
-        </ul>
-      </div>
-    </div>
   </section>
 
   <section class="block" id="experience" aria-labelledby="exp-title">
@@ -484,8 +465,8 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var
 
     <article class="project" aria-labelledby="p1">
       <div class="project-head">
-        <p class="label">Business case study · Aditya Birla Fashion &amp; Retail</p>
         <h3 id="p1">OWND! Rollout Decision</h3>
+        <p class="meta">Business case study · Aditya Birla Fashion &amp; Retail</p>
         <p class="lead">Pantaloons lost 0.8 points of EBITDA margin in FY26 as ABFRL scaled its new value format, OWND!. I built the case for what to do next, using only public data.</p>
       </div>
       <div class="project-body">
@@ -526,7 +507,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var
               <text class="cat" x="306.0" y="190" text-anchor="middle">Q1 FY27</text>
               <line class="axis" x1="12" x2="348" y1="58.6" y2="58.6"/>
             </svg>
-            <figcaption><b>Fig. 1</b>Q4's gain is mostly festive-sale timing. Pooled with Q3, the second half of FY26 was still −0.6 pp.</figcaption>
+            <figcaption>Q4's gain is mostly festive-sale timing. Pooled with Q3, the second half of FY26 was still −0.6 pp.</figcaption>
           </figure>
           <ul class="tags" aria-label="Business analysis deliverables">
             <li>Requirements &amp; acceptance tests</li><li>Gap analysis</li><li>Options &amp; cost-benefit</li><li>RACI</li><li>RAID log</li><li>Traceability matrix</li><li>Change management</li>
@@ -540,8 +521,8 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var
 
     <article class="project" aria-labelledby="p2">
       <div class="project-head">
-        <p class="label">Credit risk model · Live Streamlit app</p>
         <h3 id="p2">Company Bankruptcy Scorecard</h3>
+        <p class="meta">Credit risk model · Live Streamlit app</p>
         <p class="lead">A credit score that predicts whether a company will go bankrupt within a year, and shows which financial ratios pulled its score down.</p>
       </div>
       <div class="project-body">
@@ -561,9 +542,9 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var
         </dl>
         <div class="side">
           <div class="stats">
-            <div><span class="v"><span class="count" data-to="0.892" data-decimals="3">0.892</span></span><span class="k">Test AUC (95% CI 0.865–0.916)</span></div>
-            <div><span class="v"><span class="count" data-to="0.784" data-decimals="3">0.784</span></span><span class="k">Gini</span></div>
-            <div><span class="v"><span class="count" data-to="0.671" data-decimals="3">0.671</span></span><span class="k">KS statistic</span></div>
+            <div><span class="v">0.892</span><span class="k">Test AUC (95% CI 0.865–0.916)</span></div>
+            <div><span class="v">0.784</span><span class="k">Gini</span></div>
+            <div><span class="v">0.671</span><span class="k">KS statistic</span></div>
           </div>
           <figure class="fig">
             <p class="fig-title">Companies that went bankrupt, by risk band</p>
@@ -585,7 +566,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var
               <text class="cat" x="314.4" y="190" text-anchor="middle">Band E</text>
               <line class="axis" x1="12" x2="348" y1="166.0" y2="166.0"/>
             </svg>
-            <figcaption><b>Fig. 2</b>Bands D and E hold 20% of companies but 80% of the bankruptcies.</figcaption>
+            <figcaption>Bands D and E hold 20% of companies but 80% of the bankruptcies.</figcaption>
           </figure>
           <div class="links">
             <a class="btn" href="https://company-bankruptcy-scorecard-bhinitrout.streamlit.app/" target="_blank" rel="noopener">Try the live app ↗</a>
@@ -597,8 +578,8 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var
 
     <article class="project" aria-labelledby="p3">
       <div class="project-head">
-        <p class="label">IEEE conference paper · InC4 2026</p>
         <h3 id="p3">Deep JSCC for Robust Image Transmission over Multipath OFDM Channels</h3>
+        <p class="meta">IEEE conference paper · InC4 2026</p>
         <p class="lead">Neural radio transmitters usually need a channel model they can backpropagate through, which real hardware doesn't provide. This paper trains the transmitter with reinforcement learning instead.</p>
       </div>
       <div class="project-body">
@@ -618,9 +599,9 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var
         </dl>
         <div class="side">
           <div class="stats">
-            <div><span class="v"><span class="count" data-to="29.05" data-decimals="2">29.05</span> dB</span><span class="k">PSNR on SVHN (0.91 SSIM)</span></div>
-            <div><span class="v"><span class="count" data-to="22.17" data-decimals="2">22.17</span> dB</span><span class="k">PSNR on CIFAR-10 (0.73 SSIM)</span></div>
-            <div><span class="v">+<span class="count" data-to="17">17</span> dB</span><span class="k">Over the AWGN-trained baseline</span></div>
+            <div><span class="v">29.05 dB</span><span class="k">PSNR on SVHN (0.91 SSIM)</span></div>
+            <div><span class="v">22.17 dB</span><span class="k">PSNR on CIFAR-10 (0.73 SSIM)</span></div>
+            <div><span class="v">+17 dB</span><span class="k">Over the AWGN-trained baseline</span></div>
           </div>
           <ul class="tags" aria-label="Methods">
             <li>Reinforcement learning</li><li>Policy gradients</li><li>CNNs</li><li>OFDM</li><li>SSIM / PSNR</li>
@@ -680,17 +661,17 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var
   </section>
 
   <section class="block contact" id="contact" aria-labelledby="contact-title">
-    <p class="label">Contact</p>
-    <h2 id="contact-title">Let's talk about the problem you're solving.</h2>
-    <p class="summary">Open to software, business analyst and data roles. Email is the fastest way to reach me.</p>
+    <h2 id="contact-title">Open to software, business analyst and data roles.</h2>
+    <p class="summary">Based in Mumbai. Email is the fastest way to reach me.</p>
     <div class="contact-row">
       <div class="email">
         <output id="email-text">bhinitrout@gmail.com</output>
-        <button class="copy" id="copy-email" type="button">Copy</button>
+        <button class="copy" id="copy-email" type="button">Copy email</button>
       </div>
       <a href="https://github.com/HEYMAN225" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </section>
+  </main>
 
   <footer>
     <span>Bhinit Kumar Rout · Mumbai, India</span>
@@ -703,6 +684,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var
   var btn = document.getElementById('copy-email');
   var out = document.getElementById('email-text');
   if (!btn || !out) return;
+  var label = btn.textContent;
   function selectText() {
     try {
       var r = document.createRange();
@@ -718,7 +700,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var
     try {
       navigator.clipboard.writeText(text).then(function () {
         btn.textContent = 'Copied';
-        setTimeout(function () { btn.textContent = 'Copy'; }, 1600);
+        setTimeout(function () { btn.textContent = label; }, 1600);
       }).catch(selectText);
     } catch (e) { selectText(); }
   });
@@ -774,8 +756,8 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var
       [].forEach.call(els, function (el) { io.observe(el); });
     };
 
-    /* Count-ups: the real value stays in the page for screen readers; a visual copy counts. */
-    [].forEach.call(document.querySelectorAll('.count'), function (el) {
+    /* Count-ups (hero results only): the real value stays in the page for screen readers; a visual copy counts. */
+    [].forEach.call(document.querySelectorAll('.ledger .count'), function (el) {
       var to = parseFloat(el.getAttribute('data-to'));
       var from = parseFloat(el.getAttribute('data-from') || '0');
       var dec = parseInt(el.getAttribute('data-decimals') || '0', 10);
@@ -797,7 +779,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var
       render(from);
       el._run = function (delay) {
         setTimeout(function () {
-          var start = performance.now(), dur = 1400;
+          var start = performance.now(), dur = 1100;
           (function step(now) {
             var p = Math.min(1, (now - start) / dur);
             var v = from + (to - from) * (1 - Math.pow(1 - p, 4));
@@ -812,10 +794,11 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var
     var flow = document.querySelector('.flow');
     if (flow) {
       var busy = false;
+      var items = [].slice.call(flow.querySelectorAll('.chip, i'));
       var pulse = function () {
         if (busy) return;
         busy = true;
-        var items = [].slice.call(flow.children), step = 220;
+        var step = 160;
         items.forEach(function (el, k) {
           setTimeout(function () {
             items.forEach(function (o) { o.classList.remove('lit'); });
@@ -825,13 +808,13 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var
         setTimeout(function () {
           items.forEach(function (o) { o.classList.remove('lit'); });
           busy = false;
-        }, items.length * step + 650);
+        }, items.length * step + 500);
       };
-      setTimeout(pulse, 700);
+      setTimeout(pulse, 500);
       flow.addEventListener('pointerenter', pulse);
     }
 
-    /* Results ledger: rows land in turn once the pulse reaches "System that ships". */
+    /* Results ledger: rows land in turn while the pulse runs. */
     var ledger = document.querySelector('.ledger');
     if (ledger) {
       var rows = ledger.querySelectorAll('.row');
@@ -841,58 +824,48 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--rule); color: var
           ledger.classList.add('in');
           [].forEach.call(rows, function (row, i) {
             var c = row.querySelector('.count');
-            if (c && c._run) c._run(i * 130 + 120);
+            if (c && c._run) c._run(i * 80 + 80);
           });
-        }, Math.max(0, 1150 - (performance.now() - t0)));
+        }, Math.max(0, 600 - (performance.now() - t0)));
       });
     }
-
-    /* Project stats count up when they scroll into view. */
-    once(document.querySelectorAll('.stats'), { threshold: 0.4 }, function (box) {
-      [].forEach.call(box.querySelectorAll('.count'), function (c, i) { if (c._run) c._run(i * 120); });
-    });
 
     /* Charts: stagger each bar and its value label by category. */
     [].forEach.call(document.querySelectorAll('.chart'), function (svg) {
       var g = 0;
       [].forEach.call(svg.children, function (n) {
         var cls = ' ' + (n.getAttribute('class') || '') + ' ';
-        if (cls.indexOf(' bar ') > -1 || cls.indexOf(' val ') > -1) n.style.setProperty('--d', (g * 0.11) + 's');
+        if (cls.indexOf(' bar ') > -1 || cls.indexOf(' val ') > -1) n.style.setProperty('--d', (g * 0.08) + 's');
         if (cls.indexOf(' cat ') > -1) g++;
       });
     });
     once(document.querySelectorAll('.chart'), { threshold: 0.35 }, function (svg) { svg.classList.add('in'); });
 
-    /* Section headings rise from behind a mask; dividers draw across. */
-    [].forEach.call(document.querySelectorAll('section.block h2'), function (h) {
-      var s = document.createElement('span');
-      s.className = 'rise';
-      while (h.firstChild) s.appendChild(h.firstChild);
-      h.appendChild(s);
-    });
-    once(document.querySelectorAll('section.block'), { rootMargin: '0px 0px -12% 0px' }, function (sec) { sec.classList.add('in'); });
-
-    /* Cursor light over the hero's dot grid (mouse and trackpad only). */
+    /* Cursor light over the hero's dot grid (mouse and trackpad only).
+       The light eases toward the pointer each frame instead of jumping, so it trails with a little weight. */
     var hero = document.querySelector('.hero');
     if (hero && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      var pending = 0;
+      var tx = 0, ty = 0, cx = 0, cy = 0, raf = 0, fresh = true;
+      var tick = function () {
+        cx += (tx - cx) * 0.2;
+        cy += (ty - cy) * 0.2;
+        hero.style.setProperty('--mx', cx.toFixed(1) + 'px');
+        hero.style.setProperty('--my', cy.toFixed(1) + 'px');
+        raf = (Math.abs(tx - cx) + Math.abs(ty - cy) > 0.5) ? requestAnimationFrame(tick) : 0;
+      };
       document.addEventListener('pointermove', function (e) {
-        if (pending) return;
-        var x = e.clientX, y = e.clientY;
-        pending = requestAnimationFrame(function () {
-          pending = 0;
-          var r = hero.getBoundingClientRect();
-          var top = r.top - 90;
-          var inside = y >= top && y <= r.bottom;
-          hero.classList.toggle('lit', inside);
-          if (inside) {
-            var left = r.left + r.width / 2 - window.innerWidth / 2;
-            hero.style.setProperty('--mx', (x - left) + 'px');
-            hero.style.setProperty('--my', (y - top) + 'px');
-          }
-        });
+        var r = hero.getBoundingClientRect();
+        var top = r.top - 90;
+        var inside = e.clientY >= top && e.clientY <= r.bottom;
+        hero.classList.toggle('lit', inside);
+        if (!inside) { fresh = true; return; }
+        var left = r.left + r.width / 2 - window.innerWidth / 2;
+        tx = e.clientX - left;
+        ty = e.clientY - top;
+        if (fresh) { cx = tx; cy = ty; fresh = false; }
+        if (!raf) raf = requestAnimationFrame(tick);
       }, { passive: true });
-      document.documentElement.addEventListener('mouseleave', function () { hero.classList.remove('lit'); });
+      document.documentElement.addEventListener('mouseleave', function () { hero.classList.remove('lit'); fresh = true; });
     }
   } catch (e) {
     root.classList.remove('motion');
